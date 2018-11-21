@@ -18,15 +18,23 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 Route.on('/home').render('home')
-Route.get('/test', () => 'Hello World')
+// Route.get('/test', () => 'Hello World')
 
-Route.get('/test2', function(){
-    return 'Hello World 2';
-})
+// Route.get('/test2', function(){
+//     return 'Hello World 2';
+// })
 
-Route.get('/test/:id', function ({params}) {
-    return `it's id  ${params.id} `; 
-})
+// Route.get('/test/:id', function ({params}) {
+//     return `it's id  ${params.id} `; 
+// })
 
 // using controllers
 Route.get('/posts', 'PostController.index')
+Route.get('/posts/add', 'PostController.add')
+Route.get('/posts/edit/:id', 'PostController.edit')
+
+Route.get('/posts/:id', 'PostController.details')
+
+Route.post('/posts', 'PostController.store')
+Route.put('/posts/:id', 'PostController.update')
+Route.delete('/posts/:id', 'PostController.destroy')

@@ -2,13 +2,20 @@
 
 @section('content')
   
-<h1>Post Page</h1>
-<h5>{{ title }}</h5>
-<ul>
-    @each(item in posts)
-        <li> {{item.title}} </li>
-    @endeach
-</ul>
+    <h1>Post Page</h1>
+    <h3>{{ title }}</h3>
+    
+    @if(old('notification'))
+        <div class="alert alert-success">
+        {{ old('notification') }}
+        </div>
+    @endif
+
+    <ul class="list-group">
+        @each(item in posts)
+        <li class="list-group-item"> <a href="/posts/{{item.id}}"> {{item.title}} </a> - {{ item.body }} </li>
+        @endeach
+    </ul>
 
 @endsection
 
