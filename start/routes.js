@@ -17,3 +17,16 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+Route.on('/home').render('home')
+Route.get('/test', () => 'Hello World')
+
+Route.get('/test2', function(){
+    return 'Hello World 2';
+})
+
+Route.get('/test/:id', function ({params}) {
+    return `it's id  ${params.id} `; 
+})
+
+// using controllers
+Route.get('/posts', 'PostController.index')
